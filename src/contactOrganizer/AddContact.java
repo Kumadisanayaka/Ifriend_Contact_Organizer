@@ -11,6 +11,7 @@ public class AddContact extends javax.swing.JFrame {
     private ContactList contactList;
     public AddContact(ContactList contactList) {
         initComponents();
+        setLocationRelativeTo(null);
         setPlaceholder(nametxt, "eg.Name");
         setPlaceholder(pnumbertxt, "07xxxxxxxx");
         setPlaceholder(companytxt, "Company Name");
@@ -50,7 +51,7 @@ public class AddContact extends javax.swing.JFrame {
         backtoHomebtn = new javax.swing.JButton();
         exitbtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         mainPanel.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -135,11 +136,21 @@ public class AddContact extends javax.swing.JFrame {
         backtoHomebtn.setBackground(new java.awt.Color(51, 255, 51));
         backtoHomebtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         backtoHomebtn.setText("BACK TO HOME");
+        backtoHomebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backtoHomebtnActionPerformed(evt);
+            }
+        });
 
         exitbtn.setBackground(new java.awt.Color(255, 51, 0));
         exitbtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         exitbtn.setForeground(new java.awt.Color(255, 255, 255));
         exitbtn.setText("EXIT");
+        exitbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitbtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -147,7 +158,7 @@ public class AddContact extends javax.swing.JFrame {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
+                .addContainerGap(93, Short.MAX_VALUE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(pnumberlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,7 +220,7 @@ public class AddContact extends javax.swing.JFrame {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emaillbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addbtn)
                     .addComponent(backtoHomebtn)
@@ -336,10 +347,21 @@ public class AddContact extends javax.swing.JFrame {
             companytxt.setText("");
             dobtxt.setText("");
             emailtxt.setText("");
+            
         }else{
             JOptionPane.showMessageDialog(this, "Contact Not Added...");
         }
     }//GEN-LAST:event_addbtnActionPerformed
+
+    private void backtoHomebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backtoHomebtnActionPerformed
+        // TODO add your handling code here:
+        new HomePage(contactList).setVisible(true);
+    }//GEN-LAST:event_backtoHomebtnActionPerformed
+
+    private void exitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitbtnActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitbtnActionPerformed
 
     /**
      * @param args the command line arguments
