@@ -10,9 +10,11 @@ package contactOrganizer;
  */
 public class HomePage extends javax.swing.JFrame {
     private ContactList contactList;
-    public HomePage() {
+    public HomePage(ContactList contactList) {
         initComponents();
-        contactList = new ContactList(12, 0.25);
+        this.contactList = contactList;
+        setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -33,6 +35,7 @@ public class HomePage extends javax.swing.JFrame {
         viewContactbtn = new javax.swing.JButton();
         searchContactbtn = new javax.swing.JButton();
         exitbtn = new javax.swing.JButton();
+        logolbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +77,11 @@ public class HomePage extends javax.swing.JFrame {
         searchContactbtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         searchContactbtn.setText("Search Contact");
         searchContactbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        searchContactbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchContactbtnActionPerformed(evt);
+            }
+        });
 
         exitbtn.setBackground(new java.awt.Color(255, 0, 0));
         exitbtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -115,8 +123,10 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(searchContactbtn)
                 .addGap(18, 18, 18)
                 .addComponent(exitbtn)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
+
+        logolbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contactOrganizer/Logo (3).png"))); // NOI18N
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -124,7 +134,9 @@ public class HomePage extends javax.swing.JFrame {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(14, 14, 14)
+                .addComponent(logolbl, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(rightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -132,9 +144,15 @@ public class HomePage extends javax.swing.JFrame {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rightPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(logolbl, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -154,7 +172,14 @@ public class HomePage extends javax.swing.JFrame {
     private void addContactbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addContactbtnActionPerformed
         // TODO add your handling code here:
         new AddContact(contactList).setVisible(true);
+        dispose();
     }//GEN-LAST:event_addContactbtnActionPerformed
+
+    private void searchContactbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchContactbtnActionPerformed
+        // TODO add your handling code here:
+        new SearchContact(contactList).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_searchContactbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,7 +211,8 @@ public class HomePage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomePage().setVisible(true);
+                ContactList contactList = new ContactList(12, 0.25);
+                new HomePage(contactList).setVisible(true);
             }
         });
     }
@@ -196,6 +222,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton deleteContactbtn;
     private javax.swing.JButton exitbtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel logolbl;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel rightPanel;
     private javax.swing.JButton searchContactbtn;
