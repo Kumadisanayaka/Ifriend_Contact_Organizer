@@ -44,4 +44,36 @@ public class ContactList {
         int number = Integer.parseInt(lastContactId.substring(1));
         return String.format("%s%04d","C",(number+1));
     }
+    
+    //Search Contact
+    public Object[][] searchContact(String name){
+        int count = 0;
+        for(int i=0; i<nextIndex; i++){
+            if(contactArray[i].getName().equalsIgnoreCase(name)){
+                count++;
+            }
+        }
+        
+        Object[][] deta = new Object[count][3];
+        
+        int row = 0;
+        for (int i = 0; i < nextIndex; i++) {
+            if(contactArray[i].getName().equalsIgnoreCase(name)){
+                deta[row][0]=contactArray[i].getContactId();
+                deta[row][1]=contactArray[i].getName();
+                deta[row][2]=contactArray[i].getPhoneNumber();
+                row++;
+            }
+        }
+        return deta;
+    }
+    //get Contact
+    public Contact getContact(String id) {
+    for(int i = 0; i < nextIndex; i++) {
+        if(contactArray[i].getContactId().equals(id)) {
+            return contactArray[i];
+        }
+    }
+        return null;
+    }
 }
