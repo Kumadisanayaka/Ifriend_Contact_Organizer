@@ -5,22 +5,21 @@ public class Contact {
     private String name;
     private String phoneNumber;
     private String company;
-    private double salary;
     private String birthDay;
+    private String email;
 
     public Contact() {
-        
     }
 
-    public Contact(String contactId, String name, String phoneNumber, String company, double salary, String birthDay) {
+    public Contact(String contactId, String name, String phoneNumber, String company, String birthDay, String email) {
         this.contactId = contactId;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.company = company;
-        this.salary = salary;
         this.birthDay = birthDay;
+        this.email = email;
     }
-
+    
     /**
      * @return the contactId
      */
@@ -78,20 +77,6 @@ public class Contact {
     }
 
     /**
-     * @return the salary
-     */
-    public double getSalary() {
-        return salary;
-    }
-
-    /**
-     * @param salary the salary to set
-     */
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
-    /**
      * @return the birthDay
      */
     public String getBirthDay() {
@@ -104,5 +89,22 @@ public class Contact {
     public void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
     }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
     
+
 }
