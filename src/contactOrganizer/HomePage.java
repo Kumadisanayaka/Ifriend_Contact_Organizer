@@ -67,6 +67,11 @@ public class HomePage extends javax.swing.JFrame {
         deleteContactbtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         deleteContactbtn.setText("Delete Contact");
         deleteContactbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        deleteContactbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteContactbtnActionPerformed(evt);
+            }
+        });
 
         viewContactbtn.setBackground(new java.awt.Color(204, 255, 204));
         viewContactbtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -180,6 +185,13 @@ public class HomePage extends javax.swing.JFrame {
         new SearchContact(contactList).setVisible(true);
         dispose();
     }//GEN-LAST:event_searchContactbtnActionPerformed
+
+    private void deleteContactbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteContactbtnActionPerformed
+        // TODO add your handling code here:
+        new DeleteContact(contactList).setVisible(true);
+        dispose();
+                
+    }//GEN-LAST:event_deleteContactbtnActionPerformed
 
     /**
      * @param args the command line arguments
