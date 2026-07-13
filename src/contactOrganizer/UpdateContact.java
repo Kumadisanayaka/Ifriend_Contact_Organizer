@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package contactOrganizer;
 
 import java.awt.event.MouseAdapter;
@@ -36,7 +33,11 @@ public class UpdateContact extends javax.swing.JFrame {
         Contact contact = contactList.getContact(id);
         contactIdtxt.setText(contact.getContactId());
         contactIdtxt.setEditable(false);
-        
+        nametxt2.setText(contact.getName());
+        companytxt.setText(contact.getCompany());
+        pntxt.setText(contact.getPhoneNumber());
+        emailtxt.setText(contact.getEmail());
+        dobtxt.setText(contact.getBirthDay());
         }});
     }
 
@@ -70,6 +71,8 @@ public class UpdateContact extends javax.swing.JFrame {
         exitbtn = new javax.swing.JButton();
         backtohomebtn = new javax.swing.JButton();
         searchbtn = new javax.swing.JButton();
+        doblbl = new javax.swing.JLabel();
+        dobtxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,7 +112,19 @@ public class UpdateContact extends javax.swing.JFrame {
 
         pnlbl.setText("Phone No");
 
+        pntxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pntxtActionPerformed(evt);
+            }
+        });
+
         emaillbl.setText("Email");
+
+        emailtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailtxtActionPerformed(evt);
+            }
+        });
 
         updatebtn.setBackground(new java.awt.Color(0, 255, 0));
         updatebtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -125,11 +140,21 @@ public class UpdateContact extends javax.swing.JFrame {
         exitbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         exitbtn.setForeground(new java.awt.Color(255, 255, 255));
         exitbtn.setText("Exit");
+        exitbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitbtnActionPerformed(evt);
+            }
+        });
 
         backtohomebtn.setBackground(new java.awt.Color(255, 51, 51));
         backtohomebtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         backtohomebtn.setForeground(new java.awt.Color(255, 255, 255));
         backtohomebtn.setText("Back To Home");
+        backtohomebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backtohomebtnActionPerformed(evt);
+            }
+        });
 
         searchbtn.setBackground(new java.awt.Color(255, 0, 0));
         searchbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -141,51 +166,22 @@ public class UpdateContact extends javax.swing.JFrame {
             }
         });
 
+        doblbl.setText("Birth Day");
+
+        dobtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dobtxtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(contactIdlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(contactIdtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(pnlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(pntxt, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(companylbl, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                            .addComponent(namelbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nametxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(companytxt, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(emaillbl, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addComponent(exitbtn)
-                                .addGap(18, 18, 18)
-                                .addComponent(backtohomebtn)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(updatebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,7 +192,39 @@ public class UpdateContact extends javax.swing.JFrame {
                         .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(searchbtn)
-                        .addGap(121, 121, 121))))
+                        .addGap(121, 121, 121))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(contactIdlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(contactIdtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(pnlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(pntxt, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(emaillbl, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(companylbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(namelbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(doblbl, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(companytxt)
+                            .addComponent(dobtxt, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                            .addComponent(nametxt2))
+                        .addGap(17, 17, 17))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addComponent(exitbtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(backtohomebtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(updatebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(98, 98, 98))))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,7 +239,7 @@ public class UpdateContact extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(contactIdlbl)
                     .addComponent(contactIdtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -225,14 +253,16 @@ public class UpdateContact extends javax.swing.JFrame {
                     .addComponent(companytxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(doblbl)
+                    .addComponent(dobtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emaillbl)
-                    .addComponent(emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updatebtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exitbtn)
-                    .addComponent(backtohomebtn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(backtohomebtn)
+                    .addComponent(updatebtn))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -269,8 +299,113 @@ public class UpdateContact extends javax.swing.JFrame {
     }//GEN-LAST:event_searchbtnActionPerformed
 
     private void updatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebtnActionPerformed
+     String cId = contactIdtxt.getText();
+     String name = nametxt2.getText();
+     String pnumber = pntxt.getText();
+     String company = companytxt.getText();
+     String dob = dobtxt.getText();
+     String email = emailtxt.getText();
+     
+     if(contactIdtxt.getText().isBlank()){
+        JOptionPane.showMessageDialog(this,"Please search and select a contact first.");
+        return;
+    }
+     
+     //phone number Validation
+        if(pnumber.length()!=10 || pnumber.charAt(0) != '0'){
+            JOptionPane.showMessageDialog(this, "Invalid Phone Number...Please Re-Enter...");
+            pntxt.requestFocus(true);
+            return;
+        }
+    //email validation
+        if(!isEmail(email)){
+            JOptionPane.showMessageDialog(this, "Invalid Email...Please Re-Enter...");
+            emailtxt.requestFocus(true);
+            return;
+        }
+    //dob validation
+        try{
+        int year = Integer.parseInt(dob.substring(0,4));
+        int month = Integer.parseInt(dob.substring(5,7));
+        int day = Integer.parseInt(dob.substring(8,10));
+        
+        if((year < 1950 || year > 2016) || (month <= 0 || month > 12) || (day <= 0 || day <= 31)){
+            JOptionPane.showMessageDialog(this, "Invalid Birth Day...Pleace Re-Enter...");
+            dobtxt.requestFocus(true);
+            return;
+        }
+       }catch(Exception ex){
+           JOptionPane.showMessageDialog(this, "Birth Day format should be YYYY-MM-DD");
+           dobtxt.requestFocus(true);
+           return;
+       }
+       //name Validation
+       if(nametxt2.getText().isBlank()){
+           JOptionPane.showMessageDialog(this, "Name cannot be empty!");
+           nametxt2.requestFocus(true);
+           return;
+       }
+       //Company Validation
+       if(companytxt.getText().isBlank()){
+           JOptionPane.showMessageDialog(this, "Enter Company Name or none");
+           companytxt.requestFocus(true);
+           return;
+       }
+       
+     
+     Contact contact = new Contact(cId, name, pnumber, company, dob, email);
+     boolean isupdate = contactList.updateContact(contact);
+     
+     if(isupdate){
+         JOptionPane.showMessageDialog(this, "Contact Updated Successfully!");
+         contactIdtxt.setText("");
+         nametxt2.setText("");
+         pntxt.setText("");
+         companytxt.setText("");
+         dobtxt.setText("");
+         emailtxt.setText("");
+         
+            Object[][] data = contactList.searchContact(nametxt.getText());
+
+            DefaultTableModel dtm =
+            (DefaultTableModel)contacttbl.getModel();
+
+            dtm.setRowCount(0);
+
+            for(Object[] row : data){
+                dtm.addRow(row);
+            }
+     }else{
+         JOptionPane.showMessageDialog(this, "Update failed!");
+     }
      
     }//GEN-LAST:event_updatebtnActionPerformed
+    //email Validation
+    public static boolean isEmail(String text) {
+        return text.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
+    }
+    private void pntxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pntxtActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_pntxtActionPerformed
+
+    private void emailtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailtxtActionPerformed
+      
+    }//GEN-LAST:event_emailtxtActionPerformed
+
+    private void dobtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dobtxtActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_dobtxtActionPerformed
+
+    private void backtohomebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backtohomebtnActionPerformed
+        new HomePage(contactList).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_backtohomebtnActionPerformed
+
+    private void exitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitbtnActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,6 +419,8 @@ public class UpdateContact extends javax.swing.JFrame {
     private javax.swing.JLabel contactIdlbl;
     private javax.swing.JTextField contactIdtxt;
     private javax.swing.JTable contacttbl;
+    private javax.swing.JLabel doblbl;
+    private javax.swing.JTextField dobtxt;
     private javax.swing.JLabel emaillbl;
     private javax.swing.JTextField emailtxt;
     private javax.swing.JButton exitbtn;
