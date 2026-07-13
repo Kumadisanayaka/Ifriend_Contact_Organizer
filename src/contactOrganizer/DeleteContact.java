@@ -178,7 +178,7 @@ public class DeleteContact extends javax.swing.JFrame {
                     .addComponent(backtohomebtn)
                     .addComponent(exitbtn)
                     .addComponent(deletebtn))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
