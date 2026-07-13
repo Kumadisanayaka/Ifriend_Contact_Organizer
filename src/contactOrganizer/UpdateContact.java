@@ -329,7 +329,7 @@ public class UpdateContact extends javax.swing.JFrame {
         int month = Integer.parseInt(dob.substring(5,7));
         int day = Integer.parseInt(dob.substring(8,10));
         
-        if((year < 1950 || year > 2016) || (month <= 0 || month > 12) || (day <= 0 || day <= 31)){
+        if((year < 1950 || year > 2016) || (month <= 0 || month > 12) || (day <= 0 || day > 31)){
             JOptionPane.showMessageDialog(this, "Invalid Birth Day...Pleace Re-Enter...");
             dobtxt.requestFocus(true);
             return;
