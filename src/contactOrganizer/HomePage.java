@@ -79,6 +79,11 @@ public class HomePage extends javax.swing.JFrame {
         viewContactbtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         viewContactbtn.setText("View Contact List");
         viewContactbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        viewContactbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewContactbtnActionPerformed(evt);
+            }
+        });
 
         searchContactbtn.setBackground(new java.awt.Color(204, 255, 204));
         searchContactbtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -201,6 +206,12 @@ public class HomePage extends javax.swing.JFrame {
         dispose();
                  
     }//GEN-LAST:event_updatebtnActionPerformed
+
+    private void viewContactbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewContactbtnActionPerformed
+        // TODO add your handling code here:
+        new ViewContactList(contactList).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_viewContactbtnActionPerformed
 
     /**
      * @param args the command line arguments
