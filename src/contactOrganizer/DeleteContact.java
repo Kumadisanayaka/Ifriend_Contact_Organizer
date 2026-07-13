@@ -221,6 +221,7 @@ public class DeleteContact extends javax.swing.JFrame {
     private void backtohomebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backtohomebtnActionPerformed
         // TODO add your handling code here:
         new HomePage(contactList).setVisible(true);
+        dispose();
     }//GEN-LAST:event_backtohomebtnActionPerformed
 
     private void exitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitbtnActionPerformed
