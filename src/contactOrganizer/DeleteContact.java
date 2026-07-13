@@ -10,9 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class SearchContact extends javax.swing.JFrame {
+public class DeleteContact extends javax.swing.JFrame {
     private ContactList contactList;
-    public SearchContact(ContactList contactList) {
+    public DeleteContact(ContactList contactList) {
         initComponents();
         setLocationRelativeTo(null);
         setPlaceholder(nametxt, "eg.Name");
@@ -62,6 +62,7 @@ public class SearchContact extends javax.swing.JFrame {
         searchbtn = new javax.swing.JButton();
         backtohomebtn = new javax.swing.JButton();
         exitbtn = new javax.swing.JButton();
+        deletebtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -71,7 +72,7 @@ public class SearchContact extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Search Contact");
+        jLabel1.setText("Delete Contact");
         jLabel1.setOpaque(true);
 
         namelbl.setText("Name :");
@@ -124,6 +125,16 @@ public class SearchContact extends javax.swing.JFrame {
             }
         });
 
+        deletebtn.setBackground(new java.awt.Color(51, 51, 255));
+        deletebtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        deletebtn.setForeground(new java.awt.Color(255, 255, 255));
+        deletebtn.setText("Delete Contact");
+        deletebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletebtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -143,9 +154,11 @@ public class SearchContact extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(searchbtn))
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(157, 157, 157)
+                        .addGap(85, 85, 85)
                         .addComponent(backtohomebtn)
                         .addGap(18, 18, 18)
+                        .addComponent(deletebtn)
+                        .addGap(21, 21, 21)
                         .addComponent(exitbtn)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -163,8 +176,9 @@ public class SearchContact extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backtohomebtn)
-                    .addComponent(exitbtn))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addComponent(exitbtn)
+                    .addComponent(deletebtn))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -189,13 +203,18 @@ public class SearchContact extends javax.swing.JFrame {
     private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
         String name = nametxt.getText();
         Object[][] deta = contactList.searchContact(name);
-       DefaultTableModel dtm = (DefaultTableModel) contacttbl.getModel();
-       
-       dtm.setRowCount(0);
-       
-       for(Object[]row : deta){
-           dtm.addRow(row);
-       }
+        if(deta.length==0){
+            JOptionPane.showMessageDialog(this, "Contact is not found.!");
+            nametxt.setText("");
+        }else{
+            DefaultTableModel dtm = (DefaultTableModel) contacttbl.getModel();
+
+            dtm.setRowCount(0);
+
+            for(Object[]row : deta){
+                dtm.addRow(row);
+            }
+        }
        
     }//GEN-LAST:event_searchbtnActionPerformed
 
@@ -208,6 +227,29 @@ public class SearchContact extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_exitbtnActionPerformed
+
+    private void deletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebtnActionPerformed
+        // TODO add your handling code here:
+        int row = contacttbl.getSelectedRow();
+        
+        if(row==-1){
+            JOptionPane.showMessageDialog(this, "Please select a contact.");
+            return;
+        }
+        String id = contacttbl.getValueAt(row, 0).toString();
+        
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to delete this contact?","Confirm Delete",JOptionPane.YES_NO_OPTION);
+        
+        if(option==JOptionPane.YES_OPTION){
+            boolean isDelete = contactList.removeContact(id);
+            
+            if(isDelete){
+                ((DefaultTableModel)contacttbl.getModel()).removeRow(row);
+                
+                JOptionPane.showMessageDialog(this, "Contact Deleted Successfully...");
+            }
+        }
+    }//GEN-LAST:event_deletebtnActionPerformed
     //Set PlaceHolder
     private void setPlaceholder(JTextField textField, String placeholder) {
 
@@ -244,6 +286,7 @@ public class SearchContact extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backtohomebtn;
     private javax.swing.JTable contacttbl;
+    private javax.swing.JButton deletebtn;
     private javax.swing.JButton exitbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
