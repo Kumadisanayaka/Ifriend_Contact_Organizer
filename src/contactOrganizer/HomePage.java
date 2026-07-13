@@ -62,6 +62,11 @@ public class HomePage extends javax.swing.JFrame {
         updatebtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         updatebtn.setText("Update Contact");
         updatebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        updatebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatebtnActionPerformed(evt);
+            }
+        });
 
         deleteContactbtn.setBackground(new java.awt.Color(204, 255, 204));
         deleteContactbtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -192,6 +197,12 @@ public class HomePage extends javax.swing.JFrame {
         dispose();
                 
     }//GEN-LAST:event_deleteContactbtnActionPerformed
+
+    private void updatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebtnActionPerformed
+        // TODO add your handling code here:
+        new UpdateContact(contactList).setVisible(true);
+                 
+    }//GEN-LAST:event_updatebtnActionPerformed
 
     /**
      * @param args the command line arguments
