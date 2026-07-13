@@ -189,17 +189,13 @@ public class SearchContact extends javax.swing.JFrame {
     private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
         String name = nametxt.getText();
         Object[][] deta = contactList.searchContact(name);
-        if(deta.length==0){
-            JOptionPane.showMessageDialog(this, "Contact is Not found!");
-        }else{
-            DefaultTableModel dtm = (DefaultTableModel) contacttbl.getModel();
-
-            dtm.setRowCount(0);
-
-            for(Object[]row : deta){
-                dtm.addRow(row);
-            }
-        }
+       DefaultTableModel dtm = (DefaultTableModel) contacttbl.getModel();
+       
+       dtm.setRowCount(0);
+       
+       for(Object[]row : deta){
+           dtm.addRow(row);
+       }
        
     }//GEN-LAST:event_searchbtnActionPerformed
 
