@@ -26,6 +26,11 @@ public class ContactList {
         return nextIndex>=contactArray.length;
     }
     
+    //IsEmpty
+    public boolean isEmpty(){
+        return nextIndex<=0;
+    }
+    
     //Extend Array
     public void extendArray(){
         Contact[] tempContactArray = new Contact[contactArray.length+(int)(contactArray.length*loadFact)];
@@ -99,5 +104,17 @@ public class ContactList {
             tempContactArray[i]=contactArray[i];
         }
         contactArray=tempContactArray;
+    }
+    
+    public boolean updateContact(Contact contact){
+        if(!isEmpty()){
+            for (int i = 0; i < nextIndex; i++) {
+                if(contactArray[i].getContactId().equalsIgnoreCase(contact.getContactId())){
+                    contactArray[i]=contact;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
