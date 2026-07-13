@@ -76,4 +76,28 @@ public class ContactList {
     }
         return null;
     }
+    //Delete Contact
+    public boolean removeContact(String id){
+        int index = 0;
+        for(int i=0; i < nextIndex; i++){
+            if(contactArray[i].getContactId().equalsIgnoreCase(id)){
+                index=i;
+                break;
+            }
+        }
+        for(int i=index; i<nextIndex; i++){
+            contactArray[i]=contactArray[i+1];
+        }
+        --nextIndex;
+        trimToArray();
+        return true;
+    }
+    
+    public void trimToArray(){
+        Contact[] tempContactArray = new Contact[contactArray.length-1];
+        for(int i=0; i<tempContactArray.length; i++){
+            tempContactArray[i]=contactArray[i];
+        }
+        contactArray=tempContactArray;
+    }
 }
