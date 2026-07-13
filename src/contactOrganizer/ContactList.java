@@ -117,4 +117,19 @@ public class ContactList {
         }
         return false;
     }
+    //passing contact list
+    public Object[][] passingContactList(){
+        Object[][] data = new Object[nextIndex][6];
+        
+        for(int i = 0; i<nextIndex; i++){
+            data[i][0]=contactArray[i].getContactId();
+            data[i][1]=contactArray[i].getName();
+            data[i][2]=contactArray[i].getPhoneNumber();
+            data[i][3]=contactArray[i].getCompany();
+            data[i][4]=contactArray[i].getBirthDay();
+            data[i][5]=contactArray[i].getEmail();
+        }
+        
+        return data;
+    }
 }
